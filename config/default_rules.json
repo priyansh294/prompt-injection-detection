@@ -1,0 +1,142 @@
+[
+  {
+    "rule_name": "ignore_previous_instructions",
+    "rule_pattern": "(?i)\\b(ignore|disregard|forget|override|bypass)\\s+(all\\s+)?(previous|prior|above|earlier|system)\\s+(instructions|directives|prompts|rules|context)\\b",
+    "category": "Instruction Override",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "system_prompt_extraction",
+    "rule_pattern": "(?i)\\b(repeat|print|show|reveal|display|output|leak)\\s+(your\\s+)?(initial\\s+|secret\\s+|hidden\\s+)?(system\\s+)?(prompt|instructions|directives)\\b",
+    "category": "Prompt Extraction",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "verbatim_prompt_leakage",
+    "rule_pattern": "(?i)\\boutput\\s+(the\\s+)?text\\s+above\\s+(verbatim|word\\s+for\\s+word|completely)\\b",
+    "category": "Prompt Extraction",
+    "severity": "Medium",
+    "enabled": true
+  },
+  {
+    "rule_name": "roleplay_persona_jailbreak",
+    "rule_pattern": "(?i)\\b(you\\s+are\\s+now\\s+(in\\s+)?|act\\s+as|pretend\\s+to\\s+be)\\s+(an?\\s+)?(unrestricted|jailbroken|unfiltered|evil|dan(\\s+mode)?|developer\\s+mode|root\\s+admin)\\b",
+    "category": "Role Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "dan_mode_activation",
+    "rule_pattern": "(?i)\\b(DAN\\s+mode|Do\\s+Anything\\s+Now|jailbreak\\s+mode)\\b",
+    "category": "Role Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "bypass_safety_filters",
+    "rule_pattern": "(?i)\\b(bypass|disable|turn\\s+off|circumvent|deactivate)\\s+(the\\s+)?(safety|security|content|moderation|ethical)\\s+(filters?|guidelines?|policies|restrictions?|guardrails?)\\b",
+    "category": "Restriction Bypass",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "no_ethical_constraints",
+    "rule_pattern": "(?i)\\bwithout\\s+(any\\s+)?(restrictions|ethical\\s+guidelines|safety\\s+filters|moral\\s+boundaries)\\b",
+    "category": "Restriction Bypass",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "data_exfiltration_markdown_img",
+    "rule_pattern": "(?i)!\\[.*?\\]\\(https?://[^\\s\\)]+\\?[^\\s\\)]*=[^\\s\\)]*\\)",
+    "category": "Data Exfiltration",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "data_exfiltration_http_fetch",
+    "rule_pattern": "(?i)\\b(send|transmit|exfiltrate|forward|post|upload)\\s+.*\\bto\\s+https?://",
+    "category": "Data Exfiltration",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "curl_webhook_exfiltration",
+    "rule_pattern": "(?i)\\b(curl|fetch|wget|axios)\\s+.*https?://[^\\s]*(webhook|requestbin|pipedream|evil|attacker)",
+    "category": "Data Exfiltration",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "unauthorized_command_execution",
+    "rule_pattern": "(?i)\\b(execute|run)\\s+(bash|shell|terminal|sh|cmd|powershell|os\\.system)\\s*[:\\(]",
+    "category": "Tool Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "tool_call_override",
+    "rule_pattern": "(?i)\\b(force|invoke|call)\\s+(tool|function|api)\\s+(delete|drop|wipe|transfer|kill|privilege_escalation)\\b",
+    "category": "Tool Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "fake_system_message_tag",
+    "rule_pattern": "(?i)(<\\[?SYSTEM[^\\]>]*\\]?>|\\[SYSTEM[\\s_]+(MESSAGE|INSTRUCTION|NOTE|DIRECTIVE|PROMPT)[^\\]]*\\]|\\[DEVELOPER\\s+(NOTE|INSTRUCTION)\\]|###\\s*System:)",
+    "category": "Context Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "context_override_delimiters",
+    "rule_pattern": "(?i)(<end_of_context>|<start_of_system>|---BEGIN\\s+ADMIN\\s+OVERRIDE---)",
+    "category": "Context Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "indirect_assistant_hijack",
+    "rule_pattern": "(?i)\\b(attention\\s+(ai|assistant)|note\\s+to\\s+(ai\\s+assistant|ai|assistant|model|llm)|if\\s+you\\s+are\\s+an?\\s+(ai|assistant))\\s*[:,]\\s*(do\\s+not|ignore|disregard|say|output)\\b",
+    "category": "Instruction Injection",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "document_instruction_override",
+    "rule_pattern": "(?i)\\b(disregard|ignore|override)\\s+(the\\s+)?(user('s)?\\s+)?(question|query|request|prompt)\\s+(and\\s+)?(instead|follow|answer|say|write|instruct|execute)\\b",
+    "category": "Instruction Override",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "base64_encoded_command",
+    "rule_pattern": "(?i)(eval|exec)\\s*\\(\\s*base64\\.b64decode",
+    "category": "Tool Manipulation",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "leetspeak_ignore_variation",
+    "rule_pattern": "(?i)\\b[i1][g9][n0][o0]r[e3]\\s+[a4]ll\\s+pr[e3]v[i1][o0]us\\b",
+    "category": "Instruction Override",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "secret_key_exfiltration",
+    "rule_pattern": "(?i)\\b(dump|leak|extract|display)\\s+(all\\s+)?(api[_-]?keys?|environment\\s+variables?|passwords?|credentials?|secrets?)\\b",
+    "category": "Data Exfiltration",
+    "severity": "High",
+    "enabled": true
+  },
+  {
+    "rule_name": "system_prompt_restatement",
+    "rule_pattern": "(?i)\\bwhat\\s+are\\s+the\\s+(exact\\s+)?words\\s+at\\s+the\\s+very\\s+beginning\\s+of\\s+your\\s+prompt\\b",
+    "category": "Prompt Extraction",
+    "severity": "Medium",
+    "enabled": true
+  }
+]
